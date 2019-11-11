@@ -37,23 +37,23 @@ static void SendCommand_4Bit(ALCD_Command_TypeDef u_cmd) /* Function for send co
 	
 	/* ----------- High nibble send ----------- */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_RS_PIN)|(1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RS/RW pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_RS_PIN)|(1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RS/RW pin */
 	
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( _NIBBLE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( ( (u_cmd >> _HIGH_NIBBLE_SHIFT) & _NIBBLE) << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send high nibble data to data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( _NIBBLE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( ( (u_cmd >> _HIGH_NIBBLE_SHIFT) & _NIBBLE) << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send high nibble data to data port */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
 	
 	/* ----------- Low nibble send ------------ */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_RS_PIN)|(1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RS/RW pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_RS_PIN)|(1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RS/RW pin */
 	
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( _NIBBLE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( (u_cmd & _NIBBLE) << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send low nibble data to data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( _NIBBLE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( (u_cmd & _NIBBLE) << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send low nibble data to data port */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
 	
 	/* Function End */
 }
@@ -65,13 +65,13 @@ static void SendCommand_8Bit(ALCD_Command_TypeDef u_cmd) /* Function for send co
 	
 	/* ----------- Send user command ----------- */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_RS_PIN)|(1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RS/RW pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_RS_PIN)|(1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RS/RW pin */
 	
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( _BYTE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
-	_GPIO_WritePin(&_LCD_DATA_PORT , (u_cmd << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send data to data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( _BYTE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , (u_cmd << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send data to data port */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
 	
 	/* Function End */
 }
@@ -83,25 +83,25 @@ static void PutData_4Bit(char u_data) /* Function for send data in 4 bit mode */
 	
 	/* ----------- High nibble send ----------- */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_RS_PIN) , _GPIO_PIN_SET); /* Set RS pin */
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RW pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_RS_PIN) , _GPIO_PIN_SET); /* Set RS pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RW pin */
 	
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( _NIBBLE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( ( (u_data >> _HIGH_NIBBLE_SHIFT) & _NIBBLE) << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send high nibble data to data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( _NIBBLE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( ( (u_data >> _HIGH_NIBBLE_SHIFT) & _NIBBLE) << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send high nibble data to data port */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
 	
 	/* ----------- Low nibble send ------------ */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_RS_PIN) , _GPIO_PIN_SET); /* Set RS pin */
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RW pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_RS_PIN) , _GPIO_PIN_SET); /* Set RS pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RW pin */
 	
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( _NIBBLE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( (u_data & _NIBBLE) << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send low nibble data to data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( _NIBBLE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( (u_data & _NIBBLE) << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send low nibble data to data port */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
 	
 	/* Function End */
 }
@@ -112,14 +112,14 @@ static void PutData_8Bit(char u_data) /* Function for send data in 4 bit mode */
 	
 	/* ----------- Send user data ----------- */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_RS_PIN) , _GPIO_PIN_SET); /* Set RS pin */
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RW pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_RS_PIN) , _GPIO_PIN_SET); /* Set RS pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_RW_PIN) , _GPIO_PIN_RESET); /* Reset RW pin */
 	
-	_GPIO_WritePin(&_LCD_DATA_PORT , ( _BYTE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
-	_GPIO_WritePin(&_LCD_DATA_PORT , (u_data << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send data to data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , ( _BYTE << _LCD_DATA_PIN) , _GPIO_PIN_RESET); /* Clear Data port */
+	_GPIO_WritePin(_LCD_DATA_PORT , (u_data << _LCD_DATA_PIN) , _GPIO_PIN_SET); /* Send data to data port */
 	
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
-	_GPIO_WritePin(&_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_SET); /* Set EN pin */
+	_GPIO_WritePin(_LCD_CTRL_PORT , (1 << _LCD_EN_PIN) , _GPIO_PIN_RESET); /* Reset EN pin */
 	
 }
 
