@@ -139,14 +139,14 @@
 #ifdef __CODEVISIONAVR__  /* Check compiler */
 
 #define _Delay_Ms(t)                                    delay_ms(t) /* Select delay function */
-#define _GPIO_WritePin(gpiox , gpio_pin , pin_state)    GPIO_WritePin((gpiox) , (uint8_t)(gpio_pin) , pin_state) /* Select GPIO function */
+#define _GPIO_WritePin(gpiox , gpio_pin , pin_state)    GPIO_WritePin(&(gpiox) , (uint8_t)(gpio_pin) , pin_state) /* Select GPIO function */
 
 /*----------------------------------------------------------*/
 
 #elif defined(__GNUC__)   /* Check compiler */
 
 #define _Delay_Ms(t)                                    _delay_ms(t) /* Select delay function */
-#define _GPIO_WritePin(gpiox , gpio_pin , pin_state)    GPIO_WritePin((gpiox) , (uint8_t)(gpio_pin) , pin_state) /* Select GPIO function */
+#define _GPIO_WritePin(gpiox , gpio_pin , pin_state)    GPIO_WritePin(&(gpiox) , (uint8_t)(gpio_pin) , pin_state) /* Select GPIO function */
 
 /*----------------------------------------------------------*/
 
