@@ -36,7 +36,7 @@
 
 /* ------------------------------------------------------------------ */
 
-#elif defined(__GNUC__)  /* Check compiler */
+#elif defined(__GNUC__) && !defined(USE_HAL_DRIVER)  /* Check compiler */
 
 #pragma GCC diagnostic ignored "-Wunused-function" /* Disable 'unused function' warning */
 
