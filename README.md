@@ -6,6 +6,7 @@ Character LCD library for use in AVR - ARM Cortex M
 - #### Type : Embedded Software.
 
 - #### Support :  
+               - AVR series  
                - ARM STM32 series  
 
 - #### Program Language : C/C++
