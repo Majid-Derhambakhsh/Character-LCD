@@ -16,6 +16,7 @@ Character LCD library for use in AVR - ARM Cortex M
 ### Initialization and de-initialization functions:
 ```c++
 void Lcd_Init(void);
+void Lcd_DefInit(void);
 ``` 
 
 ### LCD operation functions:
