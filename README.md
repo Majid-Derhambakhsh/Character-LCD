@@ -23,7 +23,7 @@ Character LCD library for use in AVR - ARM Cortex M
                - Add: First STM32Cube Package  
 
 - #### Required Library/Driver :
-- GPIO Unit (added in library for AVR) : [GPIO Unit](https://github.com/Majid-Derhambakhsh/gpio-unit)  
+  GPIO Unit (added in library for AVR) : [GPIO Unit](https://github.com/Majid-Derhambakhsh/gpio-unit)  
 
 
 ### Initialization and de-initialization functions:
