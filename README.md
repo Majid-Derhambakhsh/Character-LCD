@@ -1,7 +1,9 @@
-# Character-Lcd
+![Banner](CHLCD.png)
+
+# Character-LCD
 Character LCD library for use in AVR - ARM Cortex M
 
-### Version : 0.2.0
+### Version : 1.0.0
 
 - #### Type : Embedded Software.
 
@@ -13,20 +15,31 @@ Character LCD library for use in AVR - ARM Cortex M
 
 - #### Properties :
 
+- #### Changes :  
+               - Add: Support RTOS mode  
+               - Add: void Lcd_DefInit(void) function  
+               - Modify: Change Lcd_xxx to LCD_xxx in functions and configuration  
+
+               - Add: First STM32Cube Package  
+
+- #### Required Library/Driver :
+- GPIO Unit (added in library for AVR) : [GPIO Unit](https://github.com/Majid-Derhambakhsh/gpio-unit)  
+
+
 ### Initialization and de-initialization functions:
 ```c++
-void Lcd_Init(void);
-void Lcd_DefInit(void);
+void LCD_Init(void);
+void LCD_DefInit(void);
 ``` 
 
 ### LCD operation functions:
 ```c++
-void Lcd_PutChar(char character);
-void Lcd_PutString(char *str);
-void Lcd_Clear(void);
-void Lcd_GotoXY(uint8_t column , uint8_t row);
-void Lcd_ShiftToLeft(uint8_t shift_number , uint16_t shift_time);
-void Lcd_ShiftToRight(uint8_t shift_number , uint16_t shift_time);
+void LCD_PutChar(char character);
+void LCD_PutString(char *str);
+void LCD_Clear(void);
+void LCD_GotoXY(uint8_t column , uint8_t row);
+void LCD_ShiftToLeft(uint8_t shift_number , uint16_t shift_time);
+void LCD_ShiftToRight(uint8_t shift_number , uint16_t shift_time);
 ``` 
 
 ### Macros:
@@ -63,35 +76,35 @@ void Lcd_ShiftToRight(uint8_t shift_number , uint16_t shift_time);
 2.1  Initialize:  
         
 ```c++
-Lcd_Config.Font = _FONT_5X10;
-Lcd_Config.Mode = _4BIT_INTERFACE;
-Lcd_Config.NumberOfLine = _2LINE_DISPLAY;
+LCD_Config.Font = _FONT_5X10;
+LCD_Config.Mode = _4BIT_INTERFACE;
+LCD_Config.NumberOfLine = _2LINE_DISPLAY;
 
-Lcd_Init();
+LCD_Init();
 ```  
       
 3.1  Using LCD operation functions, for example:  
 ```c++
    int main()
    {
-      Lcd_Config.Font = _FONT_5X10;
-      Lcd_Config.Mode = _4BIT_INTERFACE;
-      Lcd_Config.NumberOfLine = _2LINE_DISPLAY;
+      LCD_Config.Font = _FONT_5X10;
+      LCD_Config.Mode = _4BIT_INTERFACE;
+      LCD_Config.NumberOfLine = _2LINE_DISPLAY;
 
-      Lcd_Init();
+      LCD_Init();
       
       /* Show character */
-      Lcd_Clear();
-      Lcd_PutChar('A');
+      LCD_Clear();
+      LCD_PutChar('A');
       _Delay_Ms(1000);
 
       while (1)
       {
         
-        Lcd_Clear();
-        Lcd_GotoXY(5,0);
-        Lcd_PutString("Hello");
-        Lcd_ShiftToLeft(11,500);
+        LCD_Clear();
+        LCD_GotoXY(5,0);
+        LCD_PutString("Hello");
+        LCD_ShiftToLeft(11,500);
         _Delay_Ms(1000);
         
       }
