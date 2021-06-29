@@ -161,7 +161,7 @@ void LCD_8BitModeInit(void)
 {
 	
 	LCD_SendCommand = SendCommand_8Bit; /* Set Function */
-	LCD_PutChar = PutData_4Bit; /* Set Function */
+	LCD_PutChar = PutData_8Bit; /* Set Function */
 	
 	/* ------------------- Initialize LCD ------------------- */
 	
