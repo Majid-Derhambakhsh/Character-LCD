@@ -282,6 +282,12 @@ void LCD_GotoXY(uint8_t column , uint8_t row) /* Function for set x & y address 
 void LCD_ShiftToLeft(uint8_t shift_number , uint16_t shift_time) /* Function for shift LCD */
 {
 	
+	#if ( shift_time == 0 )
+	
+	shift_time = 1;
+	
+	#endif
+	
 	/* ---------------------- */
 	if ( shift_time < _WAIT_FOR_SET_MODE )
 	{
@@ -302,6 +308,12 @@ void LCD_ShiftToLeft(uint8_t shift_number , uint16_t shift_time) /* Function for
 
 void LCD_ShiftToRight(uint8_t shift_number , uint16_t shift_time) /* Function for shift LCD */
 {
+	
+	#if ( shift_time == 0 )
+	
+	shift_time = 1;
+	
+	#endif
 	
 	/* ---------------------- */
 	if ( shift_time < _WAIT_FOR_SET_MODE )
