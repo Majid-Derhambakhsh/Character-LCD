@@ -3,7 +3,7 @@
 # Character-LCD
 Character LCD library for use in AVR - ARM Cortex M
 
-### Version : 1.0.0
+### Version : 2.0.0
 
 - #### Type : Embedded Software.
 
